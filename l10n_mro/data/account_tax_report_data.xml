@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="tax_report" model="account.report">
+        <field name="name">Tax Report</field>
+        <field name="root_report_id" ref="account.generic_tax_report"/>
+        <field name="country_id" ref="base.mr"/>
+        <field name="filter_fiscal_position" eval="True"/>
+        <field name="availability_condition">country</field>
+        <field name="column_ids">
+            <record id="tax_report_balance" model="account.report.column">
+                <field name="name">Balance</field>
+                <field name="expression_label">balance</field>
+            </record>
+        </field>
+        <field name="line_ids">
+            <record id="tax_report_mauritania" model="account.report.line">
+                <field name="name">Fiscalité des Entreprises en Mauritanie</field>
+                <field name="children_ids">
+                    <!-- Section : Fiscalité Directe -->
+                    <record id="tax_report_direct_tax" model="account.report.line">
+                        <field name="name">Fiscalité Directe</field>
+                        <field name="children_ids">
+                            <!-- Catégorie : IS/IBAPP -->
+                            <record id="tax_report_is_ibapp" model="account.report.line">
+                                <field name="name">IS/IBAPP</field>
+                                <field name="children_ids">
+                                    <!-- Régime : BRN -->
+                                    <record id="tax_report_brn" model="account.report.line">
+                                        <field name="name">BRN 30% du bénéfice imposable</field>
+                                        <field name="code">BRN</field>
+                                        <field name="expression_ids">
+                                            <record id="tax_report_brn_30" model="account.report.expression">
+                                                <field name="label">balance</field>
+                                                <field name="engine">tax_tags</field>
+                                                <field name="formula">30%</field>
+                                            </record>
+                                        </field>
+                                    </record>
+                                    <!-- Régime : BRI -->
+                                    <record id="tax_report_bri" model="account.report.line">
+                                        <field name="name">BRI 30% du bénéfice imposable</field>
+                                        <field name="code">BRI</field>
+                                        <field name="expression_ids">
+                                            <record id="tax_report_bri_30" model="account.report.expression">
+                                                <field name="label">balance</field>
+                                                <field name="engine">tax_tags</field>
+                                                <field name="formula">30%</field>
+                                            </record>
+                                        </field>
+                                    </record>
+                                    <!-- Régime : Forfait -->
+                                    <record id="tax_report_forfait" model="account.report.line">
+                                        <field name="name">Forfait 3% du chiffre d’affaires</field>
+                                        <field name="code">Forfait</field>
+                                        <field name="expression_ids">
+                                            <record id="tax_report_forfait_30" model="account.report.expression">
+                                                <field name="label">balance</field>
+                                                <field name="engine">tax_tags</field>
+                                                <field name="formula">3%</field>
+                                            </record>
+                                        </field>
+                                    </record>
+                                </field>
+                            </record>
+                            <!-- Ajoutez d'autres catégories IS/IBAPP si nécessaire -->
+                            <!-- Catégorie : IRF -->
+                            <record id="tax_report_irf" model="account.report.line">
+                                <field name="name">IRF 10% </field>
+                                <field name="code">IRF</field>
+                                <field name="expression_ids">
+                                    <record id="tax_report_irf_30" model="account.report.expression">
+                                        <field name="label">balance</field>
+                                        <field name="engine">tax_tags</field>
+                                        <field name="formula">10%</field>
+                                    </record>
+                                </field>
+                            </record>
+                            <!-- Catégorie : ITS -->
+                            <record id="tax_report_its" model="account.report.line">
+                                <field name="name">ITS Impôt sur les Traitements et Salaires</field>
+                                <field name="code">ITS</field>
+                                <field name="expression_ids">
+                                    <record id="tax_report_its_var" model="account.report.expression">
+                                        <field name="label">balance</field>
+                                        <field name="engine">tax_tags</field>
+                                        <field name="formula">R.I. inférieur ou égal à 6.000 MRU : 0%, R.I. sup. à 6.000 et inf. ou égal à 9.000 MRU : 15%, R.I. sup. à 9.000 et inf. ou égal à 21.000 MRU : 25%, R.I. sup. à 21.000 MRU : 40%.</field>
+                                    </record>
+                                </field>
+                            </record>
+                            <!-- Catégorie : IRCM -->
+                            <record id="tax_report_ircm" model="account.report.line">
+                                <field name="name">IRCM 10% Impôt sur les Revenus des Capitaux Mobiliers</field>
+                                <field name="code">IRCM</field>
+                                <field name="expression_ids">
+                                    <record id="tax_report_ircm_10" model="account.report.expression">
+                                        <field name="label">balance</field>
+                                        <field name="engine">tax_tags</field>
+                                        <field name="formula">10%</field>
+                                    </record>
+                                </field>
+                            </record>
+                        </field>
+                    </record>
+                    <!-- Section : Droits d'Enregistrement -->
+                    <record id="tax_report_droits_enregistrement" model="account.report.line">
+                        <field name="name">Droits d'Enregistrement</field>
+                        <field name="children_ids">
+                            <!-- Catégorie : Droits d'Enregistrement des Baux -->
+                            <record id="tax_report_baux" model="account.report.line">
+                                <field name="name">Droits d'Enregistrement des Baux</field>
+                                <field name="code">Droits Baux</field>
+                                <field name="expression_ids">
+                                    <record id="tax_report_baux_1" model="account.report.expression">
+                                        <field name="label">balance</field>
+                                        <field name="engine">tax_tags</field>
+                                        <field name="formula">1% à la charge du locataire, 2% à la charge du propriétaire</field>
+                                    </record>
+                                </field>
+                            </record>
+                            <!-- Ajoutez d'autres catégories de droits d'enregistrement selon votre tableau  -->
+                        </field>
+                    </record>
+                    <!-- Ajoutez d'autres sections de taxes si nécessaire -->
+                    <!-- Section : Publicité Foncière -->
+                    <record id="tax_report_publicite_fonciere" model="account.report.line">
+                        <field name="name">Publicité Foncière</field>
+                        <field name="children_ids">
+                            <!-- Catégorie : Immatriculation aux Livres Fonciers -->
+                            <record id="tax_report_immatri_fonciers" model="account.report.line">
+                                <field name="name">Immatriculation aux Livres Fonciers</field>
+                                <field name="code">Immatriculation Livres Fonciers</field>
+                                <field name="expression_ids">
+                                    <record id="tax_report_immatri_fonciers_tag" model="account.report.expression">
+                                        <field name="label">balance</field>
+                                        <field name="engine">tax_tags</field>
+                                        <field name="formula">2% de la valeur vénale de l’immeuble immatriculé</field>
+                                    </record>
+                                </field>
+                            </record>
+                            <!-- Ajoutez d'autres catégories de publicité foncière selon votre tableau -->
+                        </field>
+                    </record>
+                    <!-- Section : Achats -->
+                    <record id="tax_report_achats" model="account.report.line">
+                        <field name="name">Achats</field>
+                        <field name="children_ids">
+                            <!-- Catégorie : Taxe sur la Valeur Ajoutée (TVA) sur Achats -->
+                            <record id="tax_report_ht_achats" model="account.report.line">
+                                <field name="name">Achats de marchandises (HT)</field>
+                                <field name="code">ACHATS_HT</field>
+                                <field name="expression_ids">
+                                    <record id="tax_report_ht_achats_16_tag" model="account.report.expression">
+                                        <field name="label">balance</field>
+                                        <field name="engine">tax_tags</field>
+                                        <field name="formula">Achats de marchandises (16%) (Base HT)</field>
+                                    </record>
+                                </field>
+                            </record>
+                            <record id="tax_report_tva_achats" model="account.report.line">
+                                <field name="name">TVA sur Achats 16%</field>
+                                <field name="code">TVA_SUR_ACHATS</field>
+                                <field name="expression_ids">
+                                    <record id="tax_report_tva_achats_16_tag" model="account.report.expression">
+                                        <field name="label">balance</field>
+                                        <field name="engine">tax_tags</field>
+                                        <field name="formula">TAUX NORMAL sur Achats 16% (TVA exigible)</field>
+                                    </record>
+                                </field>
+                            </record>
+
+                            <record id="tax_report_prestations_service_deductible_tva" model="account.report.line">
+                                <field name="name">Prestations de services (TVA déductible)</field>
+                                <field name="code">PRESTATIONS_DE_SERVICES_TVA_DEDUCTIBLE</field>
+                                <field name="expression_ids">
+                                    <record id="tax_report_prestations_service_deductible_tva_formula" model="account.report.expression">
+                                        <field name="label">balance</field>
+                                        <field name="engine">external</field>
+                                        <field name="formula">sum</field>
+                                        <field name="subformula">editable;rounding=2</field>
+                                    </record>
+                                </field>
+                            </record>
+                            <record id="tax_report_tva_TOF" model="account.report.line">
+                                <field name="name">axe sur les opérations financières (TOF)</field>
+                                <field name="code">TVA_SUR_OF</field>
+                                <field name="expression_ids">
+                                    <record id="tax_report_tva_TOF_tag" model="account.report.expression">
+                                        <field name="label">balance</field>
+                                        <field name="engine">tax_tags</field>
+                                        <field name="formula">TAUX NORMAL 16% </field>
+                                    </record>
+                                </field>
+                            </record>
+                            <!-- Catégorie : Autres Taxes sur Achats -->
+                            <record id="tax_report_autres_taxes_achats" model="account.report.line">
+                                <field name="name">Autres Taxes sur Achats</field>
+                                <field name="code">Autres Taxes Achats</field>
+                                <field name="expression_ids">
+                                    <record id="tax_report_prestations_service_deductible_tva_formula" model="account.report.expression">
+                                        <field name="label">balance</field>
+                                        <field name="engine">external</field>
+                                        <field name="formula">Variable</field>
+                                    </record>
+                                </field>
+                            </record>
+                            <!-- Catégorie : Droits de Douane sur les Importations -->
+                            <record id="tax_report_droits_douane_achats" model="account.report.line">
+                                <field name="name">Droits de Douane sur les Importations</field>
+                                <field name="code">Droits Douane Achats</field>
+                                <field name="expression_ids">
+                                    <record id="tax_report_droits_douane_achats_tag" model="account.report.expression">
+                                        <field name="label">balance</field>
+                                        <field name="engine">tax_tags</field>
+                                        <field name="formula">Variable</field>
+                                    </record>
+                                </field>
+                            </record>
+                        </field>
+                    </record>
+                    <record id="tax_report_ventes" model="account.report.line">
+                        <field name="name">Ventes</field>
+                        <field name="children_ids">
+                            <!-- Catégorie : Taxe sur la Valeur Ajoutée (TVA) sur Ventes 16% -->
+                            <record id="tax_report_ht_ventes" model="account.report.line">
+                                <field name="name">Ventes de marchandises (HT)</field>
+                                <field name="code">VENTES_DE_MARCHANDISES</field>
+                                <field name="expression_ids">
+                                    <record id="tax_report_ventes_interieur_ht_16_tag" model="account.report.expression">
+                                        <field name="label">balance</field>
+                                        <field name="engine">tax_tags</field>
+                                        <field name="formula">Ventes de marchandises (16%) (Base HT)</field>
+                                    </record>
+                                </field>
+                            </record>
+                            <record id="tax_report_tva_ventes" model="account.report.line">
+                                <field name="name">TVA sur Ventes 16%</field>
+                                <field name="code">TVA_VENTES</field>
+                                <field name="expression_ids">
+                                    <record id="tax_report_ventes_interieur_tva_16_tag" model="account.report.expression">
+                                        <field name="label">balance</field>
+                                        <field name="engine">tax_tags</field>
+                                        <field name="formula">TAUX NORMAL sur Ventes 16% (TVA exigible)</field>
+                                    </record>
+                                </field>
+                            </record>
+                            <!-- Catégorie : Autres Taxes sur Ventes -->
+                            <record id="tax_report_autres_taxes_ventes" model="account.report.line">
+                                <field name="name">Autres Taxes sur Ventes</field>
+                                <field name="code">Autres Taxes Ventes</field>
+                                <field name="expression_ids">
+                                    <record id="tax_report_immobilisations_deductible_tva_tag" model="account.report.expression">
+                                        <field name="label">balance</field>
+                                        <field name="engine">tax_tags</field>
+                                        <field name="formula">Variable</field>
+                                    </record>
+                                </field>
+                            </record>
+                        </field>
+                    </record>
+                    <record id="tax_report_autres_taxes" model="account.report.line">
+                        <field name="name">Autres Taxes</field>
+                        <field name="children_ids">
+                            <!-- Catégorie : Patente -->
+                            <record id="tax_report_patente" model="account.report.line">
+                                <field name="name">Patente</field>
+                                <field name="code">Patente</field>
+                                <field name="expression_ids">
+                                    <record id="tax_report_contribution_fonciere_tag" model="account.report.expression">
+                                        <field name="label">balance</field>
+                                        <field name="engine">tax_tags</field>
+                                        <field name="formula">Barème Variable</field>
+                                    </record>
+                                </field>
+                            </record>
+                            <!-- Catégorie : Contribution Foncière -->
+                            <record id="tax_report_contribution_fonciere" model="account.report.line">
+                                <field name="name">Contribution Foncière</field>
+                                <field name="code">Contribution Foncière</field>
+                                <field name="expression_ids">
+                                    <record id="tax_report_contribution_fonciere_tag" model="account.report.expression">
+                                        <field name="label">balance</field>
+                                        <field name="engine">tax_tags</field>
+                                        <field name="formula">3 à 10% selon les communes</field>
+                                    </record>
+                                </field>
+                            </record>
+                            <!-- Catégorie : Taxe d'Habitation -->
+                            <record id="tax_report_taxe_habitation" model="account.report.line">
+                                <field name="name">Taxe d'Habitation</field>
+                                <field name="code">Taxe Habitation</field>
+                                <field name="expression_ids">
+                                    <record id="tax_report_taxe_habitation_5" model="account.report.expression">
+                                        <field name="label">balance</field>
+                                        <field name="engine">tax_tags</field>
+                                        <field name="formula">Tarif en fonction de la catégorie d’habitation (5 catégories)</field>
+                                    </record>
+                                </field>
+                            </record>
+                        </field>
+                    </record>
+                </field>
+            </record>
+        </field>
+    </record>
+</odoo>
+

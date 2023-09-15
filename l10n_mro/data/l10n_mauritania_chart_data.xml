@@ -1,0 +1,621 @@
+<odoo>
+    <data noupdate="1">
+            <!--
+        Plan comptable général pour la Mauritanie.
+        Mis en place par la société abc
+          -->
+        <record id="l10n_mauritania_chart_template" model="account.chart.template">
+            <field name="name">Plan comptable mauritanien</field>
+            <field name="code_digits">6</field>
+            <field name="currency_id" ref="base.MRU"/>  <!-- Référence à la devise mauritanienne -->
+            <field name="bank_account_code_prefix">5500</field>
+            <field name="cash_account_code_prefix">5600</field>
+            <field name="transfer_account_code_prefix">7920</field>
+            <field name="country_id" ref="base.mr"/>  <!-- Référence au pays Mauritanie -->
+        </record>
+
+        
+        <record id="pcg_100000" model="account.account.template">
+            <field name="name">Capital social</field>
+            <field name="code">100000</field>
+            <field name="account_type">equity</field>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>            
+        </record>
+
+        <record id="pcg_130000" model="account.account.template">
+            <field name="name">Résultat net (Bénéfices de créditr)</field>
+            <field name="code">130000</field>
+            <field name="account_type">equity_unaffected</field>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>            
+        </record>
+
+        <record id="pcg_214000" model="account.account.template">
+            <field name="name">Matériel d'exploitation</field>
+            <field name="code">214000</field>
+            <field name="account_type">asset_fixed</field>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>            
+        </record>
+
+
+        <record id="pcg_215000" model="account.account.template">
+            <field name="name">Matériel de transport</field>
+            <field name="code">215000</field>
+            <field name="account_type">asset_fixed</field>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>            
+        </record>
+
+
+        <record id="pcg_216000" model="account.account.template">
+            <field name="name">Mat.de bureau et informatique</field>
+            <field name="code">216000</field>
+            <field name="account_type">asset_fixed</field>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>            
+        </record>
+
+        <record id="pcg_218000" model="account.account.template">
+            <field name="name">Mobilier de bureau</field>
+            <field name="code">218000</field>
+            <field name="account_type">asset_fixed</field>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>            
+        </record>
+
+        <record id="pcg_270000" model="account.account.template">
+            <field name="name"> Titres de participation </field>
+            <field name="code">270000</field>
+            <field name="account_type">asset_fixed</field>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>            
+        </record>
+
+        <record id="pcg_281400" model="account.account.template">
+            <field name="name">Amort matériel d'expl</field>
+            <field name="code">281400</field>
+            <field name="account_type">asset_fixed</field>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>            
+        </record>
+
+        <record id="pcg_281500" model="account.account.template">
+            <field name="name">Amort matériel de transp</field>
+            <field name="code">281500</field>
+            <field name="account_type">asset_fixed</field>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>            
+        </record>
+
+        <record id="pcg_281600" model="account.account.template">
+            <field name="name">Amort mat. de bur et informatiq</field>
+            <field name="code">281600</field>
+            <field name="account_type">asset_fixed</field>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>            
+        </record>
+
+
+        <record id="pcg_281800" model="account.account.template">
+            <field name="name">Amort mobilier de bureau</field>		
+            <field name="code">281800</field>
+            <field name="account_type">asset_fixed</field>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>            
+        </record>
+
+
+        <record id="pcg_310000" model="account.account.template">
+            <field name="name">Matières premières	</field>
+            <field name="code">310000</field>
+            <field name="account_type">asset_current</field>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>            
+        </record>
+
+
+        <record id="pcg_310001" model="account.account.template">
+            <field name="name">Fournitures</field>		
+            <field name="code">310001</field>
+            <field name="account_type">asset_current</field>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>            
+        </record>
+        
+        <record id="pcg_400000" model="account.account.template">
+            <field name="name">Fournisseurs	</field>
+            <field name="code">400000</field>
+            <field name="account_type">liability_payable</field>
+            <field name="reconcile" eval='True'/>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>            
+        </record>
+
+
+        <record id="pcg_410000" model="account.account.template">
+            <field name="name">Clients</field>	
+            <field name="code">410000</field>
+            <field name="account_type">asset_receivable</field>
+            <field name="reconcile" eval='True'/>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>            
+        </record>
+
+
+        <record id="pcg_410800" model="account.account.template">
+            <field name="name">Reten garant clts</field>
+            <field name="code">410800</field>
+            <field name="account_type">asset_receivable</field>
+            <field name="reconcile" eval='True'/>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>            
+        </record>
+
+
+        <record id="pcg_425000" model="account.account.template">
+            <field name="name">Personnel et compte rattaché</field>	
+            <field name="code">425000</field>
+            <field name="account_type">asset_current</field>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>            
+        </record>
+
+
+        <record id="pcg_432000" model="account.account.template">
+            <field name="name">Impôts sur les bénéfices et IMF</field>	
+            <field name="code">432000</field>
+            <field name="account_type">liability_payable</field>
+            <field name="reconcile" eval='True'/>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>            
+        </record>
+
+        <record id="pcg_435000" model="account.account.template">
+            <field name="name">Etat, TVA déductible</field>	
+            <field name="code">435000</field>
+            <field name="account_type">liability_payable</field>
+            <field name="reconcile" eval='True'/>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>            
+        </record>
+
+        <record id="pcg_435700" model="account.account.template">
+            <field name="name"> Etat, TVA collectée</field>	
+            <field name="code">435700</field>
+            <field name="account_type">asset_receivable</field>
+            <field name="reconcile" eval='True'/>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>            
+        </record>
+
+        <record id="pcg_441100" model="account.account.template">
+            <field name="name">Fournisseurs</field>	
+            <field name="code">441100</field>
+            <field name="account_type">liability_payable</field>
+            <field name="reconcile" eval='True'/>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>            
+        </record>
+
+        <record id="pcg_464000" model="account.account.template">
+            <field name="name">Débiteurs et créditeurs divers</field>
+            <field name="code">464000</field>
+            <field name="account_type">liability_payable</field>
+            <field name="reconcile" eval='True'/>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>            
+        </record>
+
+        <record id="pcg_468000" model="account.account.template">
+            <field name="name">Chargs … payers et prodt … recevoir</field>	
+            <field name="code">468000</field>
+            <field name="account_type">liability_payable</field>
+            <field name="reconcile" eval='True'/>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>            
+        </record>
+
+
+        <record id="pcg_480000" model="account.account.template">
+            <field name="name">expense constatées d'avance</field>		
+            <field name="code">480000</field>
+            <field name="account_type">asset_current</field>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>            
+        </record>
+
+        <record id="pcg_488000" model="account.account.template">
+            <field name="name">Comptes régul. et attente	</field>	
+            <field name="code">488000</field>
+            <field name="account_type">asset_current</field>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>            
+        </record>
+
+        <record id="pcg_550003" model="account.account.template">
+            <field name="name">Banque BMI 3781</field>		
+            <field name="code">550003</field>
+            <field name="account_type">asset_cash</field>
+            <field name="reconcile" eval='True'/>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>            
+        </record>
+
+        <record id="pcg_550004" model="account.account.template">
+            <field name="name">Banque NBM 5597664</field>	
+            <field name="code">550004</field>
+            <field name="account_type">asset_cash</field>
+            <field name="reconcile" eval='True'/>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>            
+        </record>
+
+        <record id="pcg_550005" model="account.account.template">
+            <field name="name">BIM BANK</field>
+            <field name="code">550005</field>
+            <field name="account_type">asset_cash</field>
+            <field name="reconcile" eval='True'/>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>            
+        </record>
+
+        <record id="pcg_550006" model="account.account.template">
+            <field name="name">Bankily</field>		
+            <field name="code">550006</field>
+            <field name="account_type">asset_cash</field>
+            <field name="reconcile" eval='True'/>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>            
+        </record>
+
+        <record id="pcg_550007" model="account.account.template">
+            <field name="name">BIM MOBILE</field>	
+            <field name="code">550007</field>
+            <field name="account_type">asset_cash</field>
+            <field name="reconcile" eval='True'/>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>            
+        </record>
+
+        <record id="pcg_560001" model="account.account.template">
+            <field name="name">Caisse centrale</field>
+            <field name="code">560001</field>
+            <field name="account_type">asset_cash</field>
+            <field name="reconcile" eval='True'/>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>            
+        </record>
+
+        <record id="pcg_560002" model="account.account.template">
+            <field name="name">Caisse Nø2</field>
+            <field name="code">560002</field>
+            <field name="account_type">asset_cash</field>
+            <field name="reconcile" eval='True'/>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>            
+        </record>
+
+        <record id="pcg_580000" model="account.account.template">
+            <field name="name">Virements de fonds</field>
+            <field name="code">580000</field>
+            <field name="account_type">asset_cash</field>
+            <field name="reconcile" eval='True'/>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>            
+        </record>
+
+
+        <record id="pcg_600000" model="account.account.template">
+            <field name="name">Depenses</field>
+            <field name="code">600000</field>
+            <field name="account_type">expense</field>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>            
+        </record>
+
+
+        <record id="pcg_601000" model="account.account.template">
+            <field name="name">Achat de matières prémières</field>	
+            <field name="code">601000</field>
+            <field name="account_type">expense</field>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>            
+        </record>
+
+
+        <record id="pcg_601100" model="account.account.template">
+            <field name="name">Autres approvisionnements</field>
+            <field name="code">601100</field>
+            <field name="account_type">expense</field>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>            
+        </record>
+
+
+        <record id="pcg_603000" model="account.account.template">
+            <field name="name">Variation de stocks</field>		
+            <field name="code">603000</field>
+            <field name="account_type">expense</field>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>            
+        </record>
+
+
+        <record id="pcg_606010" model="account.account.template">
+            <field name="name">Eau et Electricité</field>
+            <field name="code">606010</field>
+            <field name="account_type">expense</field>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>            
+        </record>
+
+        <record id="pcg_606100" model="account.account.template">
+            <field name="name">A. carbur. et lubrifiant</field>	
+            <field name="code">606100</field>
+            <field name="account_type">expense</field>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>            
+        </record>
+
+        <record id="pcg_606610" model="account.account.template">
+            <field name="name">Fourniture de bureaux</field>	
+            <field name="code">606610</field>
+            <field name="account_type">expense</field>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>            
+        </record>
+
+        <record id="pcg_606800" model="account.account.template">
+            <field name="name">A. autr. matér. et fourn.</field>
+            <field name="code">606800</field>
+            <field name="account_type">expense</field>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>            
+        </record>
+
+        <record id="pcg_600100" model="account.account.template">
+            <field name="name">Achats de marchandises</field>
+            <field name="code">600100</field>
+            <field name="account_type">expense</field>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>            
+        </record>
+
+        <record id="pcg_620100" model="account.account.template">
+            <field name="name">Locations et charg. locat. div.</field>
+            <field name="code">620100</field>
+            <field name="account_type">expense</field>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>            
+        </record>
+
+
+        <record id="pcg_621200" model="account.account.template">
+            <field name="name">Entret. et repar.	</field>
+            <field name="code">621200</field>
+            <field name="account_type">expense</field>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>            
+        </record>
+
+
+        <record id="pcg_621500" model="account.account.template">
+            <field name="name">Entretien et répar. véhicules</field>
+            <field name="code">621500</field>
+            <field name="account_type">expense</field>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>            
+        </record>
+
+        <record id="pcg_621700" model="account.account.template">
+            <field name="name">Entr et rep.autr</field>
+            <field name="code">621700</field>
+            <field name="account_type">expense</field>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>            
+        </record>
+
+
+        <record id="pcg_623000" model="account.account.template">
+            <field name="name">Prime d'assurance</field>
+            <field name="code">623000</field>
+            <field name="account_type">expense</field>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>            
+        </record>
+
+        
+        <record id="pcg_623400" model="account.account.template">
+            <field name="name">Assurances transport</field>	
+            <field name="code">623400</field>
+            <field name="account_type">expense</field>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>            
+        </record>
+
+        <record id="pcg_624000" model="account.account.template">
+            <field name="name">Etudes et recherches	</field>	
+            <field name="code">624000</field>
+            <field name="account_type">expense</field>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>            
+        </record>
+
+
+        <record id="pcg_625000" model="account.account.template">
+            <field name="name">Document. génle et techniq.</field>	
+            <field name="code">625000</field>
+            <field name="account_type">expense</field>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>            
+        </record>
+
+
+        <record id="pcg_630000" model="account.account.template">
+            <field name="name">Transport sur achat</field>
+            <field name="code">630000</field>
+            <field name="account_type">expense</field>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>            
+        </record>
+
+        <record id="pcg_630800" model="account.account.template">
+            <field name="name">Autr. frais de transp.</field>
+            <field name="code">630800</field>
+            <field name="account_type">expense</field>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>            
+        </record>
+
+
+        <record id="pcg_631000" model="account.account.template">
+            <field name="name">Voyages et déplacements</field>	
+            <field name="code">631000</field>
+            <field name="account_type">expense</field>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>            
+        </record>
+
+        <record id="pcg_631500" model="account.account.template">
+            <field name="name">Missions</field>	
+            <field name="code">631500</field>
+            <field name="account_type">expense</field>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>            
+        </record>
+
+
+        <record id="pcg_632010" model="account.account.template">
+            <field name="name">Teléphonie et Internet</field>
+            <field name="code">632010</field>
+            <field name="account_type">expense</field>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>            
+        </record>
+
+
+        <record id="pcg_633100" model="account.account.template">
+            <field name="name">Honoraires</field>	
+            <field name="code">633100</field>
+            <field name="account_type">expense</field>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>            
+        </record>
+
+        <record id="pcg_633400" model="account.account.template">
+            <field name="name">Commissions et courtages</field>	
+            <field name="code">633400</field>
+            <field name="account_type">expense</field>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>            
+        </record>
+
+        <record id="pcg_633" model="account.account.template">
+            <field name="name">Pertes de change</field>
+            <field name="code">633</field>
+            <field name="account_type">expense</field>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>
+        </record>
+
+        <record id="pcg_635000" model="account.account.template">
+            <field name="name">Services bancaires</field>	
+            <field name="code">635000</field>
+            <field name="account_type">expense</field>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>            
+        </record>
+
+        <record id="pcg_638000" model="account.account.template">
+            <field name="name">expense diverses</field>	
+            <field name="code">638000</field>
+            <field name="account_type">expense</field>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>            
+        </record>
+
+
+        <record id="pcg_638001" model="account.account.template">
+            <field name="name">Frais de Nouriture des employés</field>	
+            <field name="code">638001</field>
+            <field name="account_type">expense</field>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>            
+        </record>
+
+        <record id="pcg_645000" model="account.account.template">
+            <field name="name">Dons, pourboir. et subv. Accord.</field>	
+            <field name="code">645000</field>
+            <field name="account_type">expense</field>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>            
+        </record>
+
+        <record id="pcg_645000" model="account.account.template">
+            <field name="name">Autres expense et pertes exception</field>	
+            <field name="code">648000</field>
+            <field name="account_type">expense</field>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>            
+        </record>
+
+        <record id="pcg_650000" model="account.account.template">
+            <field name="name">Salaires</field>
+            <field name="code">650000</field>
+            <field name="account_type">expense</field>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>            
+        </record>
+
+        <record id="pcg_650100" model="account.account.template">
+            <field name="name">Main d'oeuvre occas.</field>	
+            <field name="code">650100</field>
+            <field name="account_type">expense</field>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>            
+        </record>
+
+        <record id="pcg_650200" model="account.account.template">
+            <field name="name">Frais du personnel</field>	
+            <field name="code">650200</field>
+            <field name="account_type">expense</field>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>            
+        </record>
+
+        <record id="pcg_650300" model="account.account.template">
+            <field name="name">Heures supplém.</field>	
+            <field name="code">650300</field>
+            <field name="account_type">expense</field>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>            
+        </record>
+
+        <record id="pcg_650500" model="account.account.template">
+            <field name="name">Congés payés</field>	
+            <field name="code">650500</field>
+            <field name="account_type">expense</field>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>            
+        </record>
+
+        <record id="pcg_650600" model="account.account.template">
+            <field name="name">Primes et gratif.</field>	
+            <field name="code">650600</field>
+            <field name="account_type">expense</field>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>            
+        </record>
+
+        <record id="pcg_660000" model="account.account.template">
+            <field name="name">Impôts directs et taxes assimilées</field>	
+            <field name="code">660000</field>
+            <field name="account_type">expense</field>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>            
+        </record>
+
+        <record id="pcg_660200" model="account.account.template">
+            <field name="name">Taxe sur les véhicules … moteur</field>	
+            <field name="code">660200</field>
+            <field name="account_type">expense</field>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>            
+        </record>
+
+        <record id="pcg_662000" model="account.account.template">
+            <field name="name">Droits enrgistr. act et marchés</field>	
+            <field name="code">662000</field>
+            <field name="account_type">expense</field>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>            
+        </record>
+
+        <record id="pcg_670000" model="account.account.template">
+            <field name="name">Intérˆts des emprunts</field>	
+            <field name="code">670000</field>
+            <field name="account_type">expense</field>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>            
+        </record>
+
+        <record id="pcg_678000" model="account.account.template">
+            <field name="name">Différences de change (Perte)</field>	
+            <field name="code">678000</field>
+            <field name="account_type">expense</field>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>            
+        </record>
+
+        <record id="pcg_680000" model="account.account.template">
+            <field name="name">Amortissements</field>	
+            <field name="code">680000</field>
+            <field name="account_type">expense</field>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>            
+        </record>
+
+        <record id="pcg_701200" model="account.account.template">
+            <field name="name">Produits des travaux</field>	
+            <field name="code">701200</field>
+            <field name="account_type">income</field>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>            
+        </record>
+
+        <record id="pcg_706600" model="account.account.template">
+            <field name="name">Produits des activités annexes</field>	
+            <field name="code">706600</field>
+            <field name="account_type">income</field>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>            
+        </record>
+
+        <record id="pcg_700100" model="account.account.template">
+            <field name="name">Ventes de marchandises au Mauritanie</field>	
+            <field name="code">700100</field>
+            <field name="account_type">income</field>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>            
+        </record>
+
+        <record id="pcg_778" model="account.account.template">
+            <field name="name">Gains de change</field>
+            <field name="code">733</field>
+            <field name="account_type">income_other</field>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>
+        </record>
+
+        <record id="pcg_778100" model="account.account.template">
+            <field name="name">Autres Produit Exceptionnels</field>	
+            <field name="code">778000</field>
+            <field name="account_type">income</field>
+            <field name="chart_template_id" ref="l10n_mauritania_chart_template"/>            
+        </record>
+
+    </data>
+</odoo>
